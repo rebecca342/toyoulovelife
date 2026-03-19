@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>W+AHT — Tech Stack Recommendation</title>
+  <style>
+    /* ─── BRAND TOKENS — swap these to match W+AHT colors ─── */
+    :root {
+      --brand-dark:   #1B2A3B;   /* deep navy        */
+      --brand-mid:    #2E5077;   /* medium blue       */
+      --brand-accent: #C9A84C;   /* warm gold         */
+      --brand-light:  #F5F0E8;   /* warm cream        */
+      --brand-white:  #FFFFFF;
+      --brand-muted:  #7A8FA6;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(27,42,59,.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--brand-light);
+      color: var(--brand-dark);
+      line-height: 1.6;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      background: var(--brand-dark);
+      color: var(--brand-white);
+      padding: 48px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, var(--brand-mid) 0%, var(--brand-dark) 60%);
+      opacity: .7;
+    }
+    header > * { position: relative; z-index: 1; }
+    .header-eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--brand-accent);
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: .02em;
+      margin-bottom: 8px;
+    }
+    header h1 span { color: var(--brand-accent); }
+    header .sub {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+    }
+
+    /* ─── LAYOUT ─── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 5% 80px;
+    }
+
+    section { margin-bottom: 56px; }
+
+    .section-label {
+      font-family: 'Arial', sans-serif;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--brand-accent);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--brand-dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--brand-accent);
+      display: inline-block;
+    }
+
+    /* ─── INTRO CARD ─── */
+    .intro-card {
+      background: var(--brand-dark);
+      color: var(--brand-white);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      box-shadow: var(--shadow);
+    }
+    .intro-card p { margin-bottom: 12px; font-size: 1.05rem; line-height: 1.75; }
+    .intro-card p:last-child { margin-bottom: 0; }
+    .intro-card strong { color: var(--brand-accent); }
+
+    /* ─── GRID CARDS ─── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--brand-white);
+      border-radius: var(--radius);
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--brand-accent);
+    }
+    .card-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: var(--brand-dark);
+    }
+    .card p, .card li {
+      font-family: 'Arial', sans-serif;
+      font-size: .88rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .card ul { padding-left: 16px; margin-top: 6px; }
+    .card li { margin-bottom: 4px; }
+
+    /* ─── PROS / CONS ─── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+
+    .pros { border-top-color: #2E7D52; }
+    .pros h3 { color: #2E7D52; }
+    .cons { border-top-color: #B85C38; }
+    .cons h3 { color: #B85C38; }
+
+    /* ─── STACK TABLE ─── */
+    .stack { display: flex; flex-direction: column; gap: 12px; }
+    .stack-row {
+      display: grid;
+      grid-template-columns: 28px 1fr 2fr;
+      align-items: start;
+      gap: 16px;
+      background: var(--brand-white);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--brand-accent);
+      transition: border-color .2s;
+    }
+    .stack-row:nth-child(1) { border-left-color: #C9A84C; }
+    .stack-row:nth-child(2) { border-left-color: #2E5077; }
+    .stack-row:nth-child(3) { border-left-color: #4A8B6F; }
+    .stack-row:nth-child(4) { border-left-color: #9B6B9B; }
+    .stack-row:nth-child(5) { border-left-color: #B85C38; }
+    .stack-row:nth-child(6) { border-left-color: #2E7D52; }
+    .stack-row:nth-child(7) { border-left-color: #5C7A9B; }
+
+    .stack-num {
+      font-family: 'Arial', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--brand-muted);
+      padding-top: 3px;
+    }
+    .stack-tool {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+    }
+    .stack-tool span {
+      display: block;
+      font-family: 'Arial', sans-serif;
+      font-size: .78rem;
+      font-weight: 400;
+      color: var(--brand-accent);
+      margin-top: 2px;
+    }
+    .stack-desc {
+      font-family: 'Arial', sans-serif;
+      font-size: .88rem;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* ─── FLOW DIAGRAM ─── */
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand-white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+    }
+    .flow-step {
+      background: var(--brand-dark);
+      color: var(--brand-white);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-family: 'Arial', sans-serif;
+      font-size: .82rem;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .flow-step strong {
+      display: block;
+      color: var(--brand-accent);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .flow-arrow {
+      color: var(--brand-accent);
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* ─── PRIORITY ACTIONS ─── */
+    .actions { counter-reset: action; display: flex; flex-direction: column; gap: 12px; }
+    .action {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      align-items: start;
+      gap: 16px;
+      background: var(--brand-white);
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      box-shadow: var(--shadow);
+    }
+    .action-num {
+      background: var(--brand-accent);
+      color: var(--brand-dark);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+    .action h4 { font-size: .98rem; margin-bottom: 4px; color: var(--brand-dark); }
+    .action p {
+      font-family: 'Arial', sans-serif;
+      font-size: .84rem;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--brand-dark);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 24px;
+      font-family: 'Arial', sans-serif;
+      font-size: .8rem;
+      letter-spacing: .05em;
+    }
+
+    @media (max-width: 700px) {
+      .stack-row { grid-template-columns: 24px 1fr; }
+      .stack-desc { grid-column: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+<header>
+  <p class="header-eyebrow">Marketing Technology Recommendation</p>
+  <h1>W+AHT — <span>Your Growth Stack</span></h1>
+  <p class="sub">Coffee &amp; Contracts · Stan Store · Flodesk · Google Workspace · Slack · Brivity · Buffini</p>
+</header>
+
+<main>
+
+  <!-- ═══ WHAT IS COFFEE & CONTRACTS ═══ -->
+  <section>
+    <p class="section-label">The Content Engine</p>
+    <h2 class="section-title">What is Coffee &amp; Contracts?</h2>
+    <div class="intro-card">
+      <p>Coffee &amp; Contracts is an <strong>all-in-one content marketing platform built specifically for real estate agents</strong> — focused on saving time, enhancing visibility, and driving consistent leads through done-for-you templates, educational resources, and proven strategy.</p>
+      <p>Founded by real estate agent <strong>Haley Ingram</strong>, who built her entire lead pipeline from Instagram — never from cold calls. Used by <strong>5,000+ agents</strong> nationwide. Starting at <strong>$54/mo</strong> (or ~$45/mo annually).</p>
+      <p>Think of it as the <strong>content engine that powers everything else</strong> in your stack — it feeds Instagram, fills the link in bio, drives email signups, and keeps your brand consistent without hours of weekly effort.</p>
+    </div>
+  </section>
+
+  <!-- ═══ CORE CAPABILITIES ═══ -->
+  <section>
+    <p class="section-label">Full Platform Overview</p>
+    <h2 class="section-title">Core Capabilities</h2>
+    <div class="card-grid">
+
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Instagram Content</h3>
+        <ul>
+          <li>113+ Reel templates (95% done-for-you)</li>
+          <li>Stories, carousels, static posts</li>
+          <li>500+ pre-written captions + ChatGPT prompts</li>
+          <li>Weekly trending reel ideas &amp; audio</li>
+          <li>50+ b-roll video ideas for agents</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📆</div>
+        <h3>Monthly Content Calendar</h3>
+        <ul>
+          <li>30+ posts/month, fully planned</li>
+          <li>Canva bulk-export — 30 days in 2 hours</li>
+          <li>Email scripts &amp; newsletter templates</li>
+          <li>Drag-and-drop content planner</li>
+          <li>New content added every week</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎁</div>
+        <h3>Lead Magnets (the gold)</h3>
+        <ul>
+          <li>Buyer's Guide &amp; Buyer Consult Presentation</li>
+          <li>Seller / Listing Guide &amp; Pre-Listing Checklist</li>
+          <li>FSBO Guide, Expired Listing Guide</li>
+          <li>Relocation / Locals Guide</li>
+          <li>New Construction, Rent vs. Buy, Investing</li>
+          <li>90 Days to Homeowner Challenge</li>
+          <li>New magnets added monthly</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📧</div>
+        <h3>Full Campaign Bundles</h3>
+        <ul>
+          <li>Lead magnet + email sequence + social posts — all pre-packaged</li>
+          <li>Landing page + Flodesk workflow templates</li>
+          <li>Buyer &amp; seller seasonal campaigns</li>
+          <li>90 Days to Homeowner Challenge</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <h3>Listing &amp; Client Resources</h3>
+        <ul>
+          <li>CMA &amp; Listing Presentation templates</li>
+          <li>Staging Guide, Moving Day Guide</li>
+          <li>Under Contract &amp; Walk-Through Checklists</li>
+          <li>Home Maintenance &amp; New Homeowner Guides</li>
+          <li>Preferred Vendor Packet</li>
+          <li>Open House resources</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <h3>Branding &amp; Design</h3>
+        <ul>
+          <li>Logo templates, email signature</li>
+          <li>Branding kit in Canva (colors, fonts, logos)</li>
+          <li>Instagram Highlight Covers</li>
+          <li>Facebook Cover Photos (seasonal)</li>
+          <li>Stock images &amp; b-roll library</li>
+          <li>Print templates — flyers, checklists</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Community &amp; Coaching</h3>
+        <ul>
+          <li>5,000+ member agent community</li>
+          <li>Weekly live trainings with proven results</li>
+          <li>Canva tutorials &amp; setup guides</li>
+          <li>Flodesk workflow walkthroughs</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>Link in Bio Strategy</h3>
+        <ul>
+          <li>Lead magnets designed to live in link in bio</li>
+          <li>Turns followers into subscribers into clients</li>
+          <li>Pairs directly with Stan Store as the hub</li>
+          <li>CTA templates for reels (&ldquo;Comment GUIDE&rdquo;)</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PROS / CONS ═══ -->
+  <section>
+    <p class="section-label">Honest Assessment</p>
+    <h2 class="section-title">Pros &amp; Cons for Carmen &amp; Sydney</h2>
+    <div class="two-col">
+      <div class="card pros">
+        <div class="card-icon">✅</div>
+        <h3>Why It Works for W+AHT</h3>
+        <ul>
+          <li>100% real estate specific — no generic templates</li>
+          <li>Canva integration — one-click editing, no design skills needed</li>
+          <li>Campaigns are complete funnels: post → magnet → email</li>
+          <li>Consistent content = consistent brand without hours of effort</li>
+          <li>Buyer/seller guides are instant, professional lead magnets</li>
+          <li>FSBO + Expired Listing resources for proactive prospecting</li>
+          <li>Real results: agents report leads from relocation &amp; buyer guides</li>
+        </ul>
+      </div>
+      <div class="card cons">
+        <div class="card-icon">⚠️</div>
+        <h3>Gaps to Know About</h3>
+        <ul>
+          <li>No DM automation, comment automation, or calendar booking — <strong>Stan Store fills this</strong></li>
+          <li>Templates need brand customization upfront — one-time setup</li>
+          <li>No built-in CRM — lives alongside Brivity &amp; Buffini</li>
+          <li>Content shared nationally — needs Bellingham personalization to stand out</li>
+          <li>Campaign templates built for Flodesk — minor rebuild if staying on Mailchimp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TECH STACK ═══ -->
+  <section>
+    <p class="section-label">Recommended Setup — In Order of Priority</p>
+    <h2 class="section-title">Your Complete Tech Stack</h2>
+    <div class="stack">
+
+      <div class="stack-row">
+        <div class="stack-num">1</div>
+        <div class="stack-tool">Google Workspace <span>Foundation — own everything</span></div>
+        <div class="stack-desc">The foundation every other tool plugs into. Domain-based email (carmen@...), Google Drive as the shared asset library, Google Contacts as the master contact list. <strong>You own your data</strong> — leads, emails, and documents live in your account, not a vendor's platform. Set this up first.</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-num">2</div>
+        <div class="stack-tool">Coffee &amp; Contracts <span>Content engine &amp; lead magnets</span></div>
+        <div class="stack-desc">Done-for-you Instagram content, monthly calendar, 113+ Reel templates, and a full library of buyer/seller guides ready to deploy as lead magnets. Brand the Canva templates once — then content takes ~2 hours/month. Starting at $54/mo.</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-num">3</div>
+        <div class="stack-tool">Flodesk <span>Email delivery &amp; nurture sequences</span></div>
+        <div class="stack-desc">Replace Mailchimp. Flat <strong>$38/month unlimited subscribers</strong> — Mailchimp costs more as your list grows. Natively integrates with every C&C lead magnet workflow. Beautiful landing pages already built. Someone submits → they automatically receive the guide. Connects to Google Workspace for data ownership.</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-num">4</div>
+        <div class="stack-tool">Stan Store <span>Link in bio hub &amp; automations</span></div>
+        <div class="stack-desc">The Instagram command center. Houses all lead magnets in one link in bio. Enables <strong>DM automation</strong> (reply to comments/DMs with freebie links), <strong>comment automation</strong> (e.g. "Comment GUIDE"), and <strong>calendar booking</strong> — all without leaving Instagram. Points leads to Flodesk landing pages.</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-num">5</div>
+        <div class="stack-tool">Slack <span>Real-time alerts &amp; team comms</span></div>
+        <div class="stack-desc">The nerve center — nothing falls through the cracks. Auto-alerts for every new lead, DM trigger, and campaign launch. Channels: <strong>#new-leads</strong>, <strong>#instagram-activity</strong>, <strong>#marketing-calendar</strong>, <strong>#listing-updates</strong>, <strong>#team-ops</strong>. Connected via Zapier (Flodesk → Slack, Stan Store → Slack).</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-num">6</div>
+        <div class="stack-tool">Brivity CRM <span>Active transactions &amp; listings</span></div>
+        <div class="stack-desc">The <strong>operational CRM</strong> — for leads in motion, active listings, showing follow-up, and under-contract communication. If they're in a transaction or close to one → Brivity. Receives leads from Flodesk via Zapier integration.</div>
+      </div>
+
+      <div class="stack-row">
+        <div class="stack-num">7</div>
+        <div class="stack-tool">Buffini CRM <span>Long-term relationships &amp; referrals</span></div>
+        <div class="stack-desc">The <strong>relationship CRM</strong> — past clients, sphere of influence, referral partners, monthly mailers, the "people who already love you" pipeline. Complements Brivity, doesn't compete. Google Workspace is the master contact list that bridges both systems.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ LEAD FLOW ═══ -->
+  <section>
+    <p class="section-label">How It All Connects</p>
+    <h2 class="section-title">Lead Flow Diagram</h2>
+    <div class="flow">
+      <div class="flow-step"><strong>C&amp;C</strong>Instagram Reel or Post</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><strong>Stan Store</strong>Link in Bio / DM Auto</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><strong>Flodesk</strong>Landing Page + Lead Capture</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><strong>Google</strong>Contacts &amp; Drive Backup</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><strong>Slack</strong>#new-leads Alert</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><strong>Brivity</strong>Active Buyer/Seller</div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-step"><strong>Buffini</strong>Long-Term Nurture</div>
+    </div>
+  </section>
+
+  <!-- ═══ PRIORITY ACTIONS ═══ -->
+  <section>
+    <p class="section-label">Getting Started</p>
+    <h2 class="section-title">Priority Action Plan</h2>
+    <div class="actions">
+
+      <div class="action">
+        <div class="action-num">1</div>
+        <div>
+          <h4>Set up Google Workspace</h4>
+          <p>Get domain-based emails live. Migrate existing contacts to Google Contacts. Set up shared Drive for C&C templates, Canva exports, and listing assets. This is the ownership layer — everything else connects here.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">2</div>
+        <div>
+          <h4>Switch to Flodesk — migrate Mailchimp list</h4>
+          <p>Export Mailchimp subscribers → import to Flodesk. Build 2–3 lead magnet workflows using C&C templates (Buyer Guide, Relocation Guide, Seller Guide). Landing pages are already designed — just brand them.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">3</div>
+        <div>
+          <h4>Brand the C&C templates once in Canva</h4>
+          <p>Set up the Canva branding kit with W+AHT colors, fonts, and logo. Use bulk-export to brand the full 30-day content calendar at once. This is the one-time setup investment — after this, monthly content takes ~2 hours.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">4</div>
+        <div>
+          <h4>Deploy Stan Store link in bio</h4>
+          <p>Point the Instagram bio link to Stan Store. Add Buyer Guide, Relocation Guide, and Seller Guide as the top 3 magnets — each pointing to the corresponding Flodesk landing page. Set up DM &amp; comment automation for Reel CTAs.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">5</div>
+        <div>
+          <h4>Set up Slack + Zapier automations</h4>
+          <p>Create channels: #new-leads, #instagram-activity, #marketing-calendar, #listing-updates, #team-ops. Connect Zapier: Flodesk new subscriber → #new-leads. Stan Store trigger → #instagram-activity. Never miss a lead.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">6</div>
+        <div>
+          <h4>Activate the monthly C&C content calendar</h4>
+          <p>Use the C&C monthly calendar as the posting rhythm. Customize every post with Bellingham-specific details to stand out from national agents using the same templates. Personalization is the differentiator.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">7</div>
+        <div>
+          <h4>Establish the Brivity ↔ Buffini handoff rule</h4>
+          <p>Active buyer/seller in a transaction → Brivity. Past client, referral partner, sphere of influence → Buffini. Google Contacts is the master list bridging both — no lead falls through the gap between the two systems.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Prepared for Carmen &amp; Sydney — W+AHT &nbsp;|&nbsp; Confidential
+</footer>
+
+</body>
+</html>
