@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In Sheet — Veterans First Time Home Buying Class</title>
+  <style>
+    :root {
+      --navy:  #1B2A3B;
+      --blue:  #2E5077;
+      --gold:  #C9A84C;
+      --cream: #F5F0E8;
+      --white: #FFFFFF;
+      --muted: #7A8FA6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--white);
+      color: var(--navy);
+      padding: 32px 40px;
+    }
+    @media print {
+      body { padding: 20px 28px; }
+      .no-print { display: none; }
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 4px solid var(--gold);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .header-left .eyebrow {
+      font-family: Arial, sans-serif;
+      font-size: .7rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .header-left h1 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--navy);
+    }
+    .header-right {
+      text-align: right;
+      font-family: Arial, sans-serif;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .badge {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: .65rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin-bottom: 8px;
+    }
+
+    /* ── META ROW ── */
+    .meta-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .meta-field label {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .meta-field .line {
+      border-bottom: 1.5px solid var(--navy);
+      height: 24px;
+    }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: .78rem;
+    }
+    thead tr {
+      background: var(--navy);
+      color: var(--gold);
+    }
+    thead th {
+      padding: 10px 8px;
+      text-align: left;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 600;
+    }
+    tbody tr {
+      border-bottom: 1px solid #D9D3C7;
+    }
+    tbody tr:nth-child(even) {
+      background: var(--cream);
+    }
+    tbody td {
+      height: 36px;
+      padding: 4px 8px;
+      vertical-align: middle;
+    }
+    .num-col { width: 36px; color: var(--muted); text-align: center; }
+    .name-col { width: 18%; }
+    .phone-col { width: 13%; }
+    .email-col { width: 22%; }
+    .branch-col { width: 14%; }
+    .zip-col { width: 9%; }
+    .sig-col { width: 16%; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-top: 1px solid #D9D3C7;
+      padding-top: 14px;
+    }
+    .footer p {
+      font-family: Arial, sans-serif;
+      font-size: .7rem;
+      color: var(--muted);
+    }
+    .footer .brand {
+      font-family: Georgia, serif;
+      font-size: .8rem;
+      color: var(--navy);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <p class="eyebrow">W+AHT &nbsp;|&nbsp; Carmen &amp; Sydney</p>
+      <h1>Veterans First Time Home Buying Class</h1>
+    </div>
+    <div class="header-right">
+      <span class="badge">Official Sign-In Sheet</span><br/>
+      Page ______ of ______
+    </div>
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-field">
+      <label>Event Date</label>
+      <div class="line"></div>
+    </div>
+    <div class="meta-field">
+      <label>Location / Platform</label>
+      <div class="line"></div>
+    </div>
+    <div class="meta-field">
+      <label>Facilitator(s)</label>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th class="num-col">#</th>
+        <th class="name-col">Full Name</th>
+        <th class="phone-col">Phone Number</th>
+        <th class="email-col">Email Address</th>
+        <th class="branch-col">Branch of Service</th>
+        <th class="zip-col">ZIP Code</th>
+        <th class="sig-col">Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 20 rows -->
+      <tr><td class="num-col">1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">6</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">7</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">8</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">9</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">10</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">11</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">12</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">13</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">14</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">15</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">16</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">17</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">18</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">19</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="num-col">20</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    <p>By signing above, attendees consent to receive follow-up communications related to this class.<br/>
+    Your information is kept confidential and will not be sold or shared with third parties.</p>
+    <p class="brand">W+AHT &nbsp;·&nbsp; Carmen &amp; Sydney</p>
+  </div>
+
+</body>
+</html>

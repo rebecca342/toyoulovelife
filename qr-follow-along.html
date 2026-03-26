@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code — Stay Connected &amp; Follow Along</title>
+  <style>
+    :root {
+      --navy:  #1B2A3B;
+      --blue:  #2E5077;
+      --gold:  #C9A84C;
+      --cream: #F5F0E8;
+      --white: #FFFFFF;
+      --muted: #7A8FA6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--white);
+      color: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media print {
+      body { background: var(--white); }
+    }
+
+    .card {
+      max-width: 680px;
+      width: 100%;
+      padding: 48px 56px;
+      text-align: center;
+    }
+
+    /* ── TOP BAND ── */
+    .top-band {
+      background: var(--navy);
+      color: var(--gold);
+      padding: 14px 24px;
+      border-radius: 6px 6px 0 0;
+      font-family: Arial, sans-serif;
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+
+    /* ── MAIN BOX ── */
+    .main-box {
+      border: 2px solid var(--navy);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      padding: 36px 40px 40px;
+    }
+
+    .star-row { font-size: 1.2rem; color: var(--gold); letter-spacing: .4em; margin-bottom: 16px; }
+
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    h1 span { color: var(--gold); }
+
+    .tagline {
+      font-family: Arial, sans-serif;
+      font-size: .88rem;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    /* ── QR FRAME ── */
+    .qr-frame {
+      display: inline-block;
+      background: var(--cream);
+      border: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .qr-frame img {
+      width: 220px;
+      height: 220px;
+      display: block;
+    }
+    .qr-label {
+      margin-top: 10px;
+      font-family: Arial, sans-serif;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .divider hr { flex: 1; border: none; border-top: 1px solid #D9D3C7; }
+    .divider span {
+      font-family: Arial, sans-serif;
+      font-size: .75rem;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ── URL PILL ── */
+    .url-pill {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Courier New', monospace;
+      font-size: .82rem;
+      padding: 10px 20px;
+      border-radius: 30px;
+      word-break: break-all;
+      margin-bottom: 28px;
+    }
+
+    /* ── BENEFIT BULLETS ── */
+    .benefits {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+    .benefits li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: Arial, sans-serif;
+      font-size: .85rem;
+      color: var(--navy);
+    }
+    .bullet-icon {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+    }
+
+    /* ── FOOTER ── */
+    .footer-strip {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 12px 16px;
+      font-family: Arial, sans-serif;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    .footer-strip strong { color: var(--navy); }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="top-band">W+AHT &nbsp;·&nbsp; Carmen &amp; Sydney &nbsp;·&nbsp; Veterans First Time Home Buying Class</div>
+    <div class="main-box">
+
+      <div class="star-row">★ ★ ★</div>
+      <h1>Stay Connected &amp;<br/><span>Follow Along</span></h1>
+      <p class="tagline">Scan the QR code below to book your free 1-on-1 consultation &amp; stay in the loop</p>
+
+      <div class="qr-frame">
+        <!-- QR code generated via Google Chart API for the calendar booking link -->
+        <img
+          src="https://chart.googleapis.com/chart?cht=qr&chs=440x440&chl=https%3A%2F%2Fcalendar.app.google%2FKebYZixzGsE3Rkqo6&choe=UTF-8&chld=H%7C2"
+          alt="QR Code — Book Your Consultation"
+        />
+        <p class="qr-label">Point your phone camera here</p>
+      </div>
+
+      <div class="divider">
+        <hr/><span>or visit</span><hr/>
+      </div>
+
+      <div class="url-pill">calendar.app.google/KebYZixzGsE3Rkqo6</div>
+
+      <ul class="benefits">
+        <li>
+          <span class="bullet-icon">1</span>
+          <span><strong>Book a FREE 1-on-1 Consultation</strong> — get personalized answers to your home buying questions</span>
+        </li>
+        <li>
+          <span class="bullet-icon">2</span>
+          <span><strong>Schedule at Your Convenience</strong> — choose a date &amp; time that works for you</span>
+        </li>
+        <li>
+          <span class="bullet-icon">3</span>
+          <span><strong>Stay Connected</strong> — receive updates on future classes, resources, and VA homebuying tips</span>
+        </li>
+      </ul>
+
+      <div class="footer-strip">
+        <strong>Questions today?</strong> &nbsp;Raise your hand or speak with Carmen or Sydney after the class.<br/>
+        W+AHT &nbsp;·&nbsp; Your trusted partners in Veterans homeownership.
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
